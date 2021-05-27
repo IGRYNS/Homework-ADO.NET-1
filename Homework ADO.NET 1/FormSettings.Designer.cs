@@ -60,6 +60,7 @@ namespace Homework_ADO.NET_1
             // 
             // settingsTypeDB
             // 
+            this.settingsTypeDB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.settingsTypeDB.FormattingEnabled = true;
             this.settingsTypeDB.Items.AddRange(new object[] {
             "MS SQL",
@@ -140,6 +141,7 @@ namespace Homework_ADO.NET_1
             this.textBox2.Enabled = false;
             this.textBox2.Location = new System.Drawing.Point(60, 93);
             this.textBox2.Name = "textBox2";
+            this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(191, 20);
             this.textBox2.TabIndex = 3;
             // 

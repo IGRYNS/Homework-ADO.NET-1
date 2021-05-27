@@ -39,7 +39,7 @@ namespace Homework_ADO.NET_1
                             SqlDataReader reader = sqlCommand.ExecuteReader();
                             if (reader.HasRows)
                             {
-                                while (reader.Read()) // построчно считываем данные
+                                /*while (reader.Read()) // построчно считываем данные
                                 {
                                     object name = reader["name"];
                                     if (name.ToString() == dbConfig.DBNameBase)
@@ -47,8 +47,34 @@ namespace Homework_ADO.NET_1
                                         MessageBox.Show("База найдена");
                                         return;
                                     }
-                                    MessageBox.Show("База не найдена");
+                                }*/
+
+                                //SELECT* FROM sys.tables WHERE name = 'YourTable' AND type = 'U'
+
+                                statusLbl.Text = "База найдена. Проверка таблиц...";
+                                dbConfig.GenerateStringConnection();
+                                using (SqlConnection sqlConnectionTestTable = new SqlConnection(dbConfig.ConnectionStr))
+                                {
+                                    sqlConnectionTestTable.Open();
+                                    command = $"SELECT Count(Name) FROM sys.tables where Name = 'Sellers' or name ='Byers' or name ='Sales'";
+                                    sqlCommand = new SqlCommand(command, sqlConnectionTestTable);
+                                    object count = sqlCommand.ExecuteScalar();
+                                    if ((int)count == 3)
+                                    {
+                                        statusLbl.Text = "Требуемые таблицы найдены.";
+                                    }
+                                    else
+                                    {
+                                        statusLbl.Text = "Требуемые таблицы не найдены.";
+                                    }
                                 }
+                                //command = $"USE '{dbConfig.DBNameBase}';SELECT * FROM sys.tables";
+
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("База не найдена");                                
                             }
                         }                        
                     }
@@ -57,6 +83,7 @@ namespace Homework_ADO.NET_1
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message,"Проверка базы данных.");
+                    statusLbl.Text = "Disconnect";
                 }
             }
         }

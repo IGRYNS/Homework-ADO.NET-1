@@ -19,7 +19,20 @@ namespace Homework_ADO.NET_1
 
         private void FormSettings_Load(object sender, EventArgs e)
         {
-
+            settingsTypeDB.SelectedItem = dbConfig.DBType;
+            settingsAdressServer.Text = dbConfig.DBAddress;
+            settingsPortServer.Text = dbConfig.DBPort;
+            settingsNameDatabase.Text = dbConfig.DBNameBase;
+            if (dbConfig.DBAuth==true)
+            {
+                radioButton1.Checked = true;
+            }
+            else if (dbConfig.DBAuth==false)
+            {
+                radioButton2.Checked = true;
+            }
+            textBox1.Text = dbConfig.DBUser;
+            textBox2.Text = dbConfig.DBPassword;
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)

@@ -31,20 +31,21 @@ namespace Homework_ADO.NET_1
                     {
                         if (DBType == "MS SQL Express")
                         {
-                            if (DBPort != "1443")
-                            {                                
-                                  ConnectionStr = $@"Data Source={DBAddress}\SQLEXPRESS,{DBPort};";
+                            if (DBPort != "1433")
+                            {
+                                ConnectionStr = $"Data Source={DBAddress}\\SQLEXPRESS,{DBPort};";                                
+                                
                             }
                             else
                             {
-                                ConnectionStr = $@"Data Source={DBAddress}\SQLEXPRESS";
+                                ConnectionStr = $"Data Source={DBAddress}\\SQLEXPRESS;";
                             }
                         }
 
                         else if (DBType == "MS SQL")
                         {
 
-                            if (DBPort != "1443")
+                            if (DBPort != "1433")
                             {
                                 ConnectionStr = $@"Data Source={DBAddress},{DBPort};";
                             }
