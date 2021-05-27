@@ -33,5 +33,49 @@ namespace Homework_ADO.NET_1
             textBox1.Enabled = false;
             textBox2.Enabled = false;
         }
+
+        private void settingsTypeDB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (settingsTypeDB.SelectedItem.ToString() == "MS SQL")
+            {
+                settingsAdressServer.Text = "localhost";
+                settingsPortServer.Text = "1433";
+            }
+            else if (settingsTypeDB.SelectedItem.ToString() == "MS SQL Express")
+            {
+                settingsAdressServer.Text = "localhost";
+                settingsPortServer.Text = "1433";
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dbConfig.DBType = settingsTypeDB.Text;
+            dbConfig.DBAddress = settingsAdressServer.Text;
+            dbConfig.DBPort = settingsPortServer.Text;
+            dbConfig.DBNameBase = settingsNameDatabase.Text;
+            if (radioButton1.Checked)
+            {
+                dbConfig.DBAuth = false;
+                dbConfig.DBUser = "";
+                dbConfig.DBPassword = "";
+            }
+            else if (radioButton2.Checked)
+            {
+                dbConfig.DBAuth = true;
+                dbConfig.DBUser = textBox1.Text;
+                dbConfig.DBPassword = textBox2.Text;
+            }
+        }
+
+        private void settingsPortServer_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
     }
 }

@@ -34,7 +34,9 @@ namespace Homework_ADO.NET_1
             this.SettingsDBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FirstDBdataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.statusLbl = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -68,14 +70,22 @@ namespace Homework_ADO.NET_1
             this.FirstDBdataToolStripMenuItem.Name = "FirstDBdataToolStripMenuItem";
             this.FirstDBdataToolStripMenuItem.Size = new System.Drawing.Size(277, 22);
             this.FirstDBdataToolStripMenuItem.Text = "Начальное заполнение базы данных";
+            this.FirstDBdataToolStripMenuItem.Click += new System.EventHandler(this.FirstDBdataToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusLbl});
             this.statusStrip1.Location = new System.Drawing.Point(0, 428);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(800, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // statusLbl
+            // 
+            this.statusLbl.Name = "statusLbl";
+            this.statusLbl.Size = new System.Drawing.Size(0, 17);
             // 
             // Form1
             // 
@@ -89,6 +99,8 @@ namespace Homework_ADO.NET_1
             this.Text = "Form1";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -101,6 +113,7 @@ namespace Homework_ADO.NET_1
         private System.Windows.Forms.ToolStripMenuItem SettingsDBToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripMenuItem FirstDBdataToolStripMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel statusLbl;
     }
 }
 
